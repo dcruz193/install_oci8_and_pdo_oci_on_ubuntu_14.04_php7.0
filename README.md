@@ -58,7 +58,7 @@ pecl install oci8
 When you are prompted for the Instant Client location, enter the following:
 
 ```
-instantclient,/opt/oracle/instantclient_12_1
+instantclient,/opt/oracle/instantclient
 ```
 NOTE: 
 verify result with phpinfo.php. The result should be the same.
@@ -91,5 +91,56 @@ php -m | grep 'oci8'
 ```
 
 If returns `oci8`, its works!
+
+### 6. Build and install Extension PDO_OCI PHP 7.0
+Run command:
+```
+pecl channel-update pear.php.net
+```
+Download and extract this Source of php7.0. Then, copy folder `php-7.0.27/ext/pdo_oci` to `/tmp/`   
+`php 7.0:` http://us1.php.net/get/php-7.0.27.tar.bz2/from/a/mirror
+
+Run command for copy `pdo_oci` in `/tmp`
+
+```
+cp -r php-7.0.27/ext/pdo_oci /tmp
+
+cd /tmp/pdo_oci
+```
+Prepare and build:
+```
+phpize
+
+./configure --with-pdo-oci=/opt/oracle/instantclient
+
+make install
+```
+Now create file with content pdo_oci.so
+```
+touch /etc/php/7.0/mods-available/pdo_oci.ini
+
+echo 'extension=pdo_oci.so' > /etc/php/7.0/mods-available/pdo_oci.ini
+```
+Link files
+```
+ln -s /etc/php/7.0/mods-available/pdo_oci.ini /etc/php/7.0/apache2/conf.d/20-pdo_oci.ini
+
+ln -s /etc/php/7.0/mods-available/pdo_oci.ini /etc/php/7.0/cli/conf.d/20-pdo_oci.ini
+
+```
+
+restart apache
+
+```
+service apache2 restart
+```
+
+See phpinfo.php and have `oci` enabled.
+
+
+
+
+
+
 
 Now you can connect to Oracle DBMS from your PHP applications.
