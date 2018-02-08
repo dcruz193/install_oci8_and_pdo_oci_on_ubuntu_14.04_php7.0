@@ -115,6 +115,17 @@ phpize
 
 make install
 ```
+
+NOTE: When you run `phpize` will show the same info of confinguration phpinfo.php. It's not the same, pdo_oci don't work.
+
+PHP API	20151012
+
+PHP Extension	20151012
+
+Zend Extension	320151012
+
+
+
 Now create file with content pdo_oci.so
 ```
 touch /etc/php/7.0/mods-available/pdo_oci.ini
