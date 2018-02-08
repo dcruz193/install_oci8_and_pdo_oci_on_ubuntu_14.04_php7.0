@@ -98,7 +98,7 @@ Run command:
 pecl channel-update pear.php.net
 ```
 Download and extract this Source of php7.0. Then, copy folder `php-7.0.27/ext/pdo_oci` to `/tmp/`   
-`php 7.0:` http://us1.php.net/get/php-7.0.27.tar.bz2/from/a/mirror
+http://us1.php.net/get/php-7.0.27.tar.bz2/from/a/mirror
 
 Run command for copy `pdo_oci` in `/tmp`
 
