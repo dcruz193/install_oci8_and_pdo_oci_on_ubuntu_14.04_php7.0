@@ -58,7 +58,7 @@ pecl install oci8
 When you are prompted for the Instant Client location, enter the following:
 
 ```
-instantclient,/opt/oracle/instantclient
+instantclient,/opt/oracle/instantclient/lib
 ```
 NOTE: 
 verify result with phpinfo.php. The result should be the same.
