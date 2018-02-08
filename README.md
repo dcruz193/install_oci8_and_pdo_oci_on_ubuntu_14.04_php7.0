@@ -135,9 +135,7 @@ restart apache
 service apache2 restart
 ```
 
-See phpinfo.php and have `oci` enabled.
-
-
+See phpinfo.php in seccion PDO and have `oci` enabled.
 
 
 
