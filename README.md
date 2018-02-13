@@ -1,6 +1,6 @@
 # How install oci8 and pdo_oci on ubuntu 14.01 and PHP 7.0
 ## Sources to download
-`php 7.0:` http://us1.php.net/get/php-7.0.27.tar.bz2/from/a/mirror
+`php 7.0:` https://github.com/php/php-src
 
 `oracle:` http://www.oracle.com/technetwork/database/database-technologies/instant-client/downloads/index.html
 ### 1. Install Oracle Instant Client and SDK version 12.1.0.2.0
@@ -97,8 +97,8 @@ Run command:
 ```
 pecl channel-update pear.php.net
 ```
-Download and extract this Source of php7.0. Then, copy folder `php-7.0.27/ext/pdo_oci` to `/tmp/`   
-http://us1.php.net/get/php-7.0.27.tar.bz2/from/a/mirror
+Download and extract this Source of php7.0, select version php from master. Then, copy folder `php-7.0.27/ext/pdo_oci` to `/tmp/`   
+https://github.com/php/php-src
 
 Run command for copy `pdo_oci` in `/tmp`
 
