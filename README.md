@@ -51,18 +51,15 @@ apt-get install php7.0-dev php-pear build-essential libaio1
 ```
 ### 3. Install extension OCI8 in php 7.0
 
-Run next comand for install and configure oci8
+Access directory to php-src-PHP-7.2.4/ext/oci8 and exec next command
 ```
-pecl install oci8
-```
-When you are prompted for the Instant Client location, enter the following:
+phpize
 
-```
-instantclient,/opt/oracle/instantclient/lib
+./configure --with-oci8=instantclient,/opt/oracle/instantclient/lib
 ```
 NOTE: 
 verify result with phpinfo.php. The result should be the same.
-In my case this info is the same like as result when run comand `pecl install oci8`. It's not the same, oci8 don't work.
+In my case this info is the same like as result when run comand `phpize`. It's not the same, oci8 don't work.
 
 PHP API	20151012
 
@@ -73,24 +70,25 @@ Zend Extension	320151012
 
 ### 4. Add extension oci8.so to php.ini
 
-Run commands to add extension in php.ini
-
+Now create file with content oci8.so
 ```
-echo "extension = oci8.so" >> /etc/php/7.0/cli/php.ini
-echo "extension = oci8.so" >> /etc/php/7.0/apache2/php.ini
-```
+touch /etc/php/7.0/mods-available/oci8.ini
 
+echo 'extension=pdo_oci.so' > /etc/php/7.0/mods-available/oci8.ini
+```
+Link files
+```
+ln -s /etc/php/7.0/mods-available/pdo_oci.ini /etc/php/7.0/apache2/conf.d/20-oci8.ini
+
+ln -s /etc/php/7.0/mods-available/pdo_oci.ini /etc/php/7.0/cli/conf.d/20-oci8.ini
+
+``
 ### 5. Restart apache
 
 ```
 service apache2 restart
 ```
-Now check if the extension is enabled with next comand.
-```
-php -m | grep 'oci8'
-```
 
-If returns `oci8`, its works!
 
 ### 6. Build and install Extension PDO_OCI PHP 7.0
 Run command:
@@ -99,13 +97,8 @@ pecl channel-update pear.php.net
 ```
 Download and extract this Source of php7.0, select version php from master. Then, copy folder `php-7.0.27/ext/pdo_oci` to `/tmp/`   
 https://github.com/php/php-src
-
-Run command for copy `pdo_oci` in `/tmp`
-
 ```
-cp -r php-7.0.27/ext/pdo_oci /tmp
-
-cd /tmp/pdo_oci
+Access directory to php-src-PHP-7.2.4/ext/pdo_oci and exec next command
 ```
 Prepare and build:
 ```
