@@ -45,11 +45,7 @@ echo /opt/oracle/instantclient/lib >> /etc/ld.so.conf
 
 ldconfig
 ```
-### 2. Install aditional package
-```
-apt-get install php7.0-dev php-pear build-essential libaio1
-```
-### 3. Install extension OCI8 in php 7.0
+### 2. Install extension OCI8 in php 7.0
 
 Access directory to php-src-PHP-7.2.4/ext/oci8 and exec next command
 ```
@@ -68,7 +64,7 @@ PHP Extension	20151012
 Zend Extension	320151012
 
 
-### 4. Add extension oci8.so to php.ini
+### 3. Add extension oci8.so to php.ini
 
 Now create file with content oci8.so
 ```
@@ -83,17 +79,12 @@ ln -s /etc/php/7.0/mods-available/pdo_oci.ini /etc/php/7.0/apache2/conf.d/20-oci
 ln -s /etc/php/7.0/mods-available/pdo_oci.ini /etc/php/7.0/cli/conf.d/20-oci8.ini
 
 ``
-### 5. Restart apache
+### 4. Restart apache
 
 ```
 service apache2 restart
 ```
 
-
-### 6. Build and install Extension PDO_OCI PHP 7.0
-Run command:
-```
-pecl channel-update pear.php.net
 ```
 Download and extract this Source of php7.0, select version php from master. Then, copy folder `php-7.0.27/ext/pdo_oci` to `/tmp/`   
 https://github.com/php/php-src
