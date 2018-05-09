@@ -46,12 +46,18 @@ echo /opt/oracle/instantclient/lib >> /etc/ld.so.conf
 ldconfig
 ```
 ### 2. Install extension OCI8 in php 7.0
+Install php dev tools
+```
+apt-get install php5.6-dev
+```
 
 Access directory to php-src-PHP-7.2.4/ext/oci8 and exec next command
 ```
 phpize
 
 ./configure --with-oci8=instantclient,/opt/oracle/instantclient/lib
+
+make install
 ```
 NOTE: 
 verify result with phpinfo.php. The result should be the same.
@@ -70,13 +76,12 @@ Now create file with content oci8.so
 ```
 touch /etc/php/7.0/mods-available/oci8.ini
 
-echo 'extension=pdo_oci.so' > /etc/php/7.0/mods-available/oci8.ini
+echo 'extension=oci8.so' > /etc/php/7.0/mods-available/oci8.ini
 ```
 Link files
 ```
-ln -s /etc/php/7.0/mods-available/pdo_oci.ini /etc/php/7.0/apache2/conf.d/20-oci8.ini
-
-ln -s /etc/php/7.0/mods-available/pdo_oci.ini /etc/php/7.0/cli/conf.d/20-oci8.ini
+ln -s /etc/php/7.0/mods-available/oci8.ini /etc/php/7.0/apache2/conf.d/20-oci8.ini
+ln -s /etc/php/7.0/mods-available/oci8.ini /etc/php/7.0/cli/conf.d/20-oci8.ini
 
 ``
 ### 4. Restart apache
@@ -130,7 +135,7 @@ restart apache
 service apache2 restart
 ```
 
-See phpinfo.php in seccion PDO and have `oci` enabled.
+See phpinfo.php in seccion PDO and have `pdo_oci` enabled.
 
 
 
