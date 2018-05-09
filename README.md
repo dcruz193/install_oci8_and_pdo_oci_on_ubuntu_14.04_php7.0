@@ -83,14 +83,12 @@ Link files
 ln -s /etc/php/7.0/mods-available/oci8.ini /etc/php/7.0/apache2/conf.d/20-oci8.ini
 ln -s /etc/php/7.0/mods-available/oci8.ini /etc/php/7.0/cli/conf.d/20-oci8.ini
 
-``
+```
 ### 4. Restart apache
-
 ```
 service apache2 restart
 ```
 
-```
 Download and extract this Source of php7.0, select version php from master. Then, copy folder `php-7.0.27/ext/pdo_oci` to `/tmp/`   
 https://github.com/php/php-src
 ```
