@@ -91,11 +91,9 @@ service apache2 restart
 ### Install pdo_oci to php
 
 
-Download and extract this Source of php7.0, select version php from master. Then, copy folder `php-7.0.27/ext/pdo_oci` to `/tmp/`   
-https://github.com/php/php-src
-```
+
 Access directory to php-src-PHP-7.2.4/ext/pdo_oci and exec next command
-```
+
 Prepare and build:
 ```
 phpize
